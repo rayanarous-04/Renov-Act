@@ -1,0 +1,707 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renov'Act — PSC 65</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --orange:#ff7a00;
+      --green:#3ca55c;
+      --yellow:#ffd54a;
+      --dark:#1d1d1d;
+      --light:#f9fafc;
+      --gray:#6b7280;
+      --white:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:22px;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--light);
+      color:var(--dark);
+      overflow-x:hidden;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1150px,92%);
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:999;
+      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,0.82);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 0;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      font-size:1.2rem;
+      color:var(--orange);
+    }
+
+    .logo img{
+      width:55px;
+      height:55px;
+      object-fit:contain;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+    }
+
+    nav a{
+      font-size:0.9rem;
+      color:var(--gray);
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:var(--orange);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:130px 0 70px;
+      position:relative;
+      overflow:hidden;
+      background:
+      radial-gradient(circle at top right, rgba(255,122,0,0.15), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(60,165,92,0.15), transparent 30%),
+      var(--light);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-block;
+      background:rgba(255,122,0,0.12);
+      color:var(--orange);
+      padding:10px 18px;
+      border-radius:999px;
+      font-size:0.85rem;
+      margin-bottom:20px;
+      font-weight:600;
+    }
+
+    .hero h1{
+      font-size:clamp(2.5rem,8vw,5rem);
+      line-height:1.05;
+      margin-bottom:20px;
+      font-weight:700;
+    }
+
+    .hero h1 span{
+      color:var(--orange);
+    }
+
+    .hero p{
+      color:var(--gray);
+      line-height:1.9;
+      font-size:1rem;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:15px 28px;
+      border-radius:999px;
+      font-weight:600;
+      transition:0.3s;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--orange),#ff9b3d);
+      color:white;
+      box-shadow:var(--shadow);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-4px);
+    }
+
+    .btn-secondary{
+      background:white;
+      border:1px solid rgba(0,0,0,0.08);
+    }
+
+    .btn-secondary:hover{
+      border-color:var(--orange);
+      color:var(--orange);
+    }
+
+    .hero-image{
+      position:relative;
+    }
+
+    .hero-card{
+      background:white;
+      border-radius:35px;
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card img{
+      border-radius:25px;
+    }
+
+    .floating-card{
+      position:absolute;
+      background:white;
+      padding:15px 20px;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      font-size:0.9rem;
+      font-weight:600;
+    }
+
+    .floating-card.one{
+      top:-10px;
+      right:-10px;
+      color:var(--green);
+    }
+
+    .floating-card.two{
+      bottom:-10px;
+      left:-10px;
+      color:var(--orange);
+    }
+
+    /* SECTIONS */
+
+    section{
+      padding:90px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:clamp(2rem,5vw,3.4rem);
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:var(--gray);
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:35px;
+    }
+
+    .about-card{
+      background:white;
+      padding:35px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .about-card h3{
+      margin-bottom:15px;
+      color:var(--orange);
+    }
+
+    .about-card p{
+      line-height:1.9;
+      color:var(--gray);
+    }
+
+    /* STATS */
+
+    .stats{
+      background:linear-gradient(135deg,#fff6eb,#f5fff7);
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .stat-box{
+      background:white;
+      padding:35px 20px;
+      text-align:center;
+      border-radius:25px;
+      box-shadow:var(--shadow);
+    }
+
+    .stat-box h3{
+      font-size:2.5rem;
+      color:var(--orange);
+      margin-bottom:10px;
+    }
+
+    .stat-box p{
+      color:var(--gray);
+    }
+
+    /* GALLERY */
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+
+    .gallery-grid img{
+      border-radius:20px;
+      height:220px;
+      object-fit:cover;
+      transition:0.4s;
+      box-shadow:var(--shadow);
+    }
+
+    .gallery-grid img:hover{
+      transform:scale(1.03);
+    }
+
+    /* VIDEO */
+
+    .video-wrapper{
+      overflow:hidden;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .video-wrapper iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:none;
+    }
+
+    /* IMPACT */
+
+    .impact{
+      background:white;
+    }
+
+    .impact-box{
+      background:linear-gradient(135deg,var(--orange),#ff9f43);
+      padding:45px;
+      border-radius:35px;
+      color:white;
+      box-shadow:var(--shadow);
+    }
+
+    .impact-box p{
+      line-height:2;
+      margin-top:20px;
+      opacity:0.95;
+    }
+
+    /* QR CODE */
+
+    .qr-section{
+      text-align:center;
+    }
+
+    .qr-card{
+      background:white;
+      display:inline-block;
+      padding:30px;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+    }
+
+    .qr-card img{
+      width:220px;
+      margin:auto;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111827;
+      color:white;
+      padding:60px 0 30px;
+      text-align:center;
+    }
+
+    footer img{
+      width:90px;
+      margin:auto auto 20px;
+    }
+
+    footer p{
+      color:rgba(255,255,255,0.7);
+      line-height:1.8;
+    }
+
+    .copyright{
+      margin-top:25px;
+      font-size:0.9rem;
+      color:rgba(255,255,255,0.5);
+    }
+
+    /* TOP BUTTON */
+
+    .top-btn{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:52px;
+      height:52px;
+      border:none;
+      border-radius:50%;
+      background:var(--orange);
+      color:white;
+      font-size:1.2rem;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      z-index:999;
+    }
+
+    /* RESPONSIVE */
+
+    @media(min-width:768px){
+
+      .hero-grid,
+      .about-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .stats-grid{
+        grid-template-columns:repeat(4,1fr);
+      }
+
+      .gallery-grid{
+        grid-template-columns:repeat(4,1fr);
+      }
+
+      .gallery-grid img:first-child{
+        grid-column:span 2;
+        height:460px;
+      }
+
+      .gallery-grid img:nth-child(2){
+        height:460px;
+      }
+
+      .gallery-grid img:nth-child(3){
+        height:460px;
+      }
+      .fa-instagram {
+         font-size: 50px; /* augmente ici */
+    }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+
+    <div class="logo">
+      <img src="logo_renovact.png" alt="RenovAct Logo">
+      <span>Renov'Act</span>
+    </div>
+
+    <nav>
+      <a href="#about">Projet</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#video">Vidéo</a>
+      <a href="#impact">Impact</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="badge">
+        PSC N°65 · Projet Socioculturel
+      </div>
+
+      <h1>
+        Transformer une salle de classe,<br>
+        <span>inspirer des générations.</span>
+      </h1>
+
+      <p>
+        Renov'Act est un projet socioculturel porté par un groupe d’étudiants engagés ayant pour mission de réhabiliter entièrement la salle de classe préparatoire de l’École Primaire El Nagr à Kalaa Sghira afin d’offrir aux élèves un espace moderne, ergonomique et stimulant.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Découvrir le projet</a>
+        <a href="#video" class="btn btn-secondary">Voir la vidéo</a>
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+
+      <div class="hero-card">
+        <img src="apres1.png" alt="Education">
+      </div>
+
+      <div class="floating-card one">
+        11 semaines d'efforts
+      </div>
+
+      <div class="floating-card two">
+        Impact durable pour les élèves
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="about">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Notre Mission</h2>
+      <p>
+        Unir nos compétences et notre énergie pour créer un environnement éducatif sain, moderne et inspirant.
+      </p>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>Rénover</h3>
+        <p>
+          Réhabilitation complète de la salle : peinture, revêtement du sol, amélioration de l’espace et modernisation du mobilier.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Inspirer</h3>
+        <p>
+          Offrir aux enfants un environnement motivant qui stimule leur créativité, leur concentration et leur bien-être.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Construire l’avenir</h3>
+        <p>
+          Créer un impact durable pour les générations futures grâce à l’engagement citoyen et au travail collectif.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Engagement étudiant</h3>
+        <p>
+          Le projet a été réalisé grâce à la cohésion de l’équipe, au soutien des partenaires et à une forte mobilisation sur les réseaux sociaux.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="stats">
+
+  <div class="container">
+
+    <div class="stats-grid">
+
+      <div class="stat-box">
+        <h3>11</h3>
+        <p>Semaines de travail</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>100%</h3>
+        <p>Engagement étudiant</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>1</h3>
+        <p>Salle totalement rénovée</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>∞</h3>
+        <p>Impact pour les générations</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="gallery">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Galerie du Projet</h2>
+      <p>
+        Les différentes étapes de Renov'Act : rénovation, peinture, travail d’équipe et inauguration.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <img src="avant1.png" alt="Travail d'équipe">
+
+      <img src="avant2.png" alt="Étudiants">
+
+      <img src="apres1.png" alt="Éducation">
+
+      <img src="apres2.png" alt="Salle rénovée">
+
+    </div>
+
+  </div>
+
+<section id="video">
+
+  <div class="container">
+
+    <div class="video-wrapper">
+
+      <video controls width="100%" poster="thumbnail.jpg">
+        <source src="video_final.mp4" type="video/mp4">
+      </video>
+
+    </div>
+
+  </div>
+
+</section>
+
+</section>
+
+<section class="impact" id="impact">
+
+  <div class="container">
+
+    <div class="impact-box">
+
+      <h2>L’impact du projet</h2>
+
+      <p>
+        Grâce à Renov'Act, une salle vétuste a été transformée en un véritable espace de vie pédagogique moderne et ergonomique. L’enthousiasme des élèves découvrant leur nouvelle salle a confirmé l’importance d’un environnement scolaire sain et stimulant.
+        
+        Au-delà de la rénovation matérielle, ce projet représente une expérience humaine forte basée sur la solidarité, la citoyenneté et le travail collectif.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  <div class="container">
+
+    <img src="logo_renovact.png" alt="RenovAct Logo">
+
+    <h2>Renov'Act</h2>
+     <a href="https://www.instagram.com/renov_act_psc/" target="_blank fa-instagram" class="social-icon">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <p>
+      Projet PSC N65 2026 — Ecole Polytechnique de Sousse, Tunisie
+    </p>
+   
+
+    <div class="copyright">
+      © 2026 Renov'Act · Tous droits réservés
+    </div>
+
+  </div>
+
+</footer>
+
+<button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
+
+</body>
+</html>
+```
+
+
+
